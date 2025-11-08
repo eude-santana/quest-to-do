@@ -11,7 +11,10 @@ export default function QuestItem(props) {
   const concluded = props.quest.status === "concluído";
 
   return (
-    <div className="flex gap-4 flex-col md:flex-row items-center">
+    <div className="flex gap-4 flex-col md:flex-row items-center"
+
+    data-testid="questItem"
+    >
       <div className="flex gap-4 items-center w-full sm:w-[80%]">
         <input
           disabled={concluded}
@@ -50,7 +53,11 @@ export default function QuestItem(props) {
           >
             Editar
           </button>
-          <button>Excluir</button>
+          <button onClick={() => {
+            if (concluded) return;
+              else props.saveDeleteQuest(props.quest);
+          }}
+          >Excluir</button>
         </div>
       )}
     </div>

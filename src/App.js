@@ -76,6 +76,14 @@ function App() {
     setQuests(JSON.parse(window.localStorage.getItem("quests")));
   }
 
+  function saveDeleteQuest(quest) {
+    let auxQuests = quests;
+
+    const filterAuxQuests = auxQuests.filter(
+      (auxQuest) => auxQuest.id !== quest.id
+    );
+  }
+
   return (
     <div className="flex h-screen justify-center items-center">
       <div className="card w-[80%] lg:w-[50%] h-[70%] shadow-md rounded-sm transform ease-out duration-300 items-center p-10 gap-5">
@@ -90,6 +98,7 @@ function App() {
             quests={notConcludedQuests}
             saveEditQuest={saveEditQuest}
             saveConcludedQuest={saveConcludedQuest}
+            saveDeleteQuest={saveDeleteQuest}
           />
         </div>
 
